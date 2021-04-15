@@ -1,0 +1,220 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://ui/clean_theme.tres" type="Theme" id=1]
+[ext_resource path="res://assets/objects.png" type="Texture" id=2]
+[ext_resource path="res://assets/ground.png" type="Texture" id=3]
+[ext_resource path="res://ui/popup_activate.gd" type="Script" id=4]
+[ext_resource path="res://ui/panel_back.tres" type="StyleBox" id=5]
+[ext_resource path="res://ui/callhide.gd" type="Script" id=6]
+
+[node name="gui" type="CanvasLayer"]
+
+[node name="NewMap" type="Button" parent="."]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 110.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 80, 22 )
+theme = ExtResource( 1 )
+text = "New Map"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Help" type="Button" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -63.9999
+margin_top = 10.0
+margin_right = -9.99994
+margin_bottom = 32.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_default_cursor_shape = 16
+theme = ExtResource( 1 )
+text = "Guide"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Guide" type="WindowDialog" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -360.957
+margin_top = 33.5328
+margin_right = -9.95703
+margin_bottom = 198.533
+mouse_default_cursor_shape = 16
+theme = ExtResource( 1 )
+window_title = "Guide"
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Guide"]
+margin_left = 4.89996
+margin_top = 1.7818
+margin_right = 303.9
+margin_bottom = 159.782
+text = "Push boxes (       ) to goals (       )
+  using the stacker (       )
+
+Controls:
+WASD or arrow keys to move
+Q while moving to swap
+Shift to turn
+Space to launch a single object (box or stacker)
+Control to grab a single object (box or stacker)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="objects" type="Sprite" parent="Guide/Label"]
+position = Vector2( 100.118, 8.93315 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 24, 24 )
+
+[node name="objects2" type="Sprite" parent="Guide/Label"]
+position = Vector2( 141.173, 28.9843 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 24, 24, 24 )
+
+[node name="ground" type="Sprite" parent="Guide/Label"]
+position = Vector2( 193.752, 8.93363 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 24, 0, 24, 24 )
+
+[node name="Stats" type="Panel" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = -100.0
+margin_right = 180.0
+margin_bottom = -9.99994
+rect_min_size = Vector2( 170, 90 )
+theme = ExtResource( 1 )
+custom_styles/panel = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Margin" type="MarginContainer" parent="Stats"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 123.0
+margin_bottom = 84.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="H" type="HBoxContainer" parent="Stats/Margin"]
+margin_right = 144.0
+margin_bottom = 74.0
+
+[node name="V" type="VBoxContainer" parent="Stats/Margin/H"]
+margin_right = 70.0
+margin_bottom = 74.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GoalsLabel" type="Label" parent="Stats/Margin/H/V"]
+margin_right = 70.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 70, 0 )
+text = "Goals:"
+
+[node name="ActionsLabel" type="Label" parent="Stats/Margin/H/V"]
+margin_top = 26.0
+margin_right = 70.0
+margin_bottom = 48.0
+text = "Actions: "
+
+[node name="TimeLabel" type="Label" parent="Stats/Margin/H/V"]
+margin_top = 52.0
+margin_right = 70.0
+margin_bottom = 74.0
+text = "Time: "
+
+[node name="VValues" type="VBoxContainer" parent="Stats/Margin/H"]
+margin_left = 74.0
+margin_right = 144.0
+margin_bottom = 74.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Goals" type="Label" parent="Stats/Margin/H/VValues"]
+margin_right = 70.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 70, 0 )
+text = "10/10"
+align = 2
+
+[node name="Actions" type="Label" parent="Stats/Margin/H/VValues"]
+margin_top = 26.0
+margin_right = 70.0
+margin_bottom = 48.0
+text = "120"
+align = 2
+
+[node name="Time" type="Label" parent="Stats/Margin/H/VValues"]
+margin_top = 52.0
+margin_right = 70.0
+margin_bottom = 74.0
+text = "300"
+align = 2
+
+[node name="YouWin" type="WindowDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -50.0
+margin_right = 100.0
+margin_bottom = 50.0
+theme = ExtResource( 1 )
+custom_colors/title_color = Color( 1, 0.632813, 0, 1 )
+popup_exclusive = true
+window_title = "Congratulations!"
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="YouWin"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -55.5
+margin_top = -11.0
+margin_right = 55.5
+margin_bottom = 11.0
+text = "You win"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewMap" type="Button" parent="YouWin"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -50.0
+margin_top = -22.0
+margin_right = 50.0
+rect_min_size = Vector2( 80, 22 )
+theme = ExtResource( 1 )
+text = "New Map"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Help" to="Guide" method="popup"]
+[connection signal="pressed" from="YouWin/NewMap" to="YouWin" method="hide"]

@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/objects_ts.tres" type="TileSet" id=1]
+[ext_resource path="res://assets/ground_ts.tres" type="TileSet" id=2]
+[ext_resource path="res://assets/walls_ts.tres" type="TileSet" id=3]
+[ext_resource path="res://source/main_push.gd" type="Script" id=4]
+[ext_resource path="res://source/generate_map.gd" type="Script" id=5]
+[ext_resource path="res://ui/map_settings.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ui/gui.tscn" type="PackedScene" id=7]
+
+[node name="game" type="Node"]
+
+[node name="ground" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 23, 23 )
+cell_quadrant_size = 23
+cell_custom_transform = Transform2D( 23, 0, 0, 23, 0, 0 )
+format = 1
+
+[node name="walls" type="TileMap" parent="."]
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 23, 23 )
+cell_quadrant_size = 23
+cell_custom_transform = Transform2D( 23, 0, 0, 23, 0, 0 )
+format = 1
+
+[node name="objects" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 23, 23 )
+cell_quadrant_size = 23
+cell_custom_transform = Transform2D( 23, 0, 0, 23, 0, 0 )
+format = 1
+
+[node name="main" type="Node" parent="."]
+script = ExtResource( 4 )
+
+[node name="controls" type="Node" parent="."]
+script = ExtResource( 4 )
+
+[node name="generate_map" type="Node" parent="."]
+script = ExtResource( 5 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 380.021, 360.129 )
+current = true
+
+[node name="gui" parent="." instance=ExtResource( 7 )]
+
+[node name="map_settings" parent="gui" instance=ExtResource( 6 )]
