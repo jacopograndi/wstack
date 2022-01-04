@@ -1,5 +1,6 @@
 # wstack
 Simple game based on [Sokoban](https://en.wikipedia.org/wiki/Sokoban)
+Implemented with the Godot Engine
 
 The release of the game can be found on [itch.io](https://zyka.itch.io/wstack)
 
